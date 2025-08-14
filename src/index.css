@@ -55,13 +55,14 @@ header p {
 
 main {
     padding-inline: 4rem;
-
+    background-color: var(--background-color);
+    color: var(--font-color);
 
 }
 
 .search-filter-container {
 
-    margin-block: 2rem;
+    padding-block: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

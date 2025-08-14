@@ -1,13 +1,16 @@
-import { StrictMode, useEffect, useState } from "react";
-import Header from "./Components/header";
+import { StrictMode, useContext, useEffect, useState } from "react";
 import "./index.css";
 import SearchBar from "./Components/SearchBar";
 import Filter from "./Components/Filter";
 import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
 import SkeletonCard from "./SkeletonCard";
+import ThemeContext from "./contexts/ThemeContext";
 // import CountriesData from './CountriesData.json'
 function App() {
+  const {isDark}=useContext(ThemeContext);
+  
+  
   const [countries, setCountries] = useState([]);
   const [query,setQuery]=useState("")
   const [region,setRegion]=useState('all')
@@ -46,12 +49,12 @@ function App() {
   );
   return (
     <>
-      <main>
+      <main className={isDark?'dark':''} >
         <div className="search-filter-container">
           <SearchBar  SetQuery={setQuery}/>
           <Filter SelectedOption={region} SetSelectedOption={setRegion} />
         </div>
-        <div className="cards-container">
+        <div className={`cards-container ${isDark?'dark':''}`} >
           {countries.filter((country) =>
               country.name.common.toLowerCase().includes(query)
             ).filter((country)=>{

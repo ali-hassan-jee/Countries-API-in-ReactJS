@@ -1,10 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import "./Country.css";
 import { useNavigate } from "react-router-dom";
 import SkeletonCardDetails from "./SkeletonCardDetails";
+import ThemeContext from "./contexts/ThemeContext";
 function CountryDetails() {
+  const {isDark}=useContext(ThemeContext)
   const navigate = useNavigate();
   const { name } = useParams(); // Get the country name from URL
   const [country, setCountry] = useState(null);
@@ -53,7 +55,7 @@ function CountryDetails() {
   if (!country) return <p>Country not found.</p>;
   
   return (
-    <main>
+    <main style={{minHeight:'100vh',paddingTop:'3em'}} className={isDark?'dark':''}>
       <p
         className="back-btn"
         onClick={() => {

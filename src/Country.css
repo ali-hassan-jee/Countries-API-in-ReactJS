@@ -22,7 +22,7 @@ main {}
 
 
 .back-btn {
-    margin-block: 3rem;
+    margin-bottom: 3em;
     padding: 6px 24px;
     box-shadow: 0 0 3px 3px var(--box-shadow);
     width: max-content;
